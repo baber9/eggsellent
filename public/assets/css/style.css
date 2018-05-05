@@ -1,0 +1,55 @@
+/* EGG Panel Styles */
+
+.panel-default {
+    text-align: center;
+    cursor: pointer;
+    margin: 20px;
+    border-radius: 10px;
+}
+
+.panel-default > .panel-footer {
+    color: #fff;
+    background-color: #FFA900;
+    display: none;
+    text-shadow: 1px 1px 1px rgba(150, 150, 150, 1);
+}
+
+.panel-default i {
+    font-size: 5em;
+}
+
+.panel-body {
+    padding: 0;
+}
+
+/* Page Styles */
+div.to-eat {
+    border: 5px solid #0068FF;
+}
+
+div.eaten {
+    border: 5px solid #F4A813;
+}
+
+div.page-header {
+    text-align: center;
+}
+
+div.page-header > img {
+    width: 20%;
+}
+
+div.row {
+    margin: 20px 0;
+    text-align: center;
+}
+
+textarea {
+    margin-bottom: 10px;
+    resize: none;
+}
+
+p#instruction {
+    color: #0068FF;
+    font-size: 12px;
+}
