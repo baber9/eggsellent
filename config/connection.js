@@ -3,14 +3,21 @@
 // require mysql node module
 var mysql = require('mysql');
 
+var connection;
+
+
 // set connection
-var connection = mysql.createConnection({
-    port: 3306,
-    host: 'localhost',
-    user: '',                           // REMOVE BEFORE PUSH
-    password: '',                       // REMOVE BEFORE PUSH
-    database: 'egg_db'
-});
+if (process.env.JAWSDB_URL) {
+    connection = mysql.createConnection(process.env.JAWSDB_URL);
+} else {
+    var connection = mysql.createConnection({
+        port: 3306,
+        host: 'localhost',
+        user: '',                           // REMOVE BEFORE PUSH
+        password: '',                       // REMOVE BEFORE PUSH
+        database: 'egg_db'
+    });
+};
 
 // create connection
 connection.connect((err) => {
