@@ -1,7 +1,7 @@
 // THIS file is strictly use to handle the DATA
 
 // import ORM from config/orm.js
-var orm = requir('../config/orm.js');
+var orm = require('../config/orm.js');
 
 var egg = {
     all: (cb) => {
@@ -22,4 +22,4 @@ var egg = {
 };
 
 //export for use by controller (controllers/eggs_controller.js)
-module.export = egg;
+module.exports = egg;

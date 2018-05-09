@@ -5,7 +5,7 @@ var express = require('express');
 var router = express.Router();
 
 // import model
-var egg = require("../models/eggs.js");
+var egg = require('../models/eggs.js');
 
 // CREATE ROUTES
 
@@ -14,12 +14,11 @@ router.get('/', (req, res) => {
     
     // call egg model method .all
     egg.all((data) => {
-        
+
         // create handlebars obj
         var hbsObject = {
             eggs: data
         };
-        console.log(hbsObject);
 
         // pass to handlebar index view
         res.render('index', hbsObject);
@@ -29,11 +28,31 @@ router.get('/', (req, res) => {
 // post route
 router.post('/api/eggs', (req, res) => {
 
-    // call egg model method .create
+    // call create method from egg model
     egg.create(['egg_name', 'devoured'], [req.body.name, req.body.devoured], (result) => {
 
         // return json object with new ID
         res.json({ id: result.newId });
+    });
+});
+
+// put route
+router.put('/api/eggs/:id', (req, res) => {
+
+    // set devoured (used as param for update)
+    var devoured = "id = " + req.params.id;
+
+    // call update method from model
+    egg.update({
+        devoured: req.body.devoured
+    }, devoured, (result) => {
+
+        // return appropriate response
+        if(result.changedRows == 0) {
+            return res.status(404).end();
+        } else {
+            res.status(200).end();
+        }
     });
 });
 

@@ -7,8 +7,8 @@ var mysql = require('mysql');
 var connection = mysql.createConnection({
     port: 3306,
     host: 'localhost',
-    user: 'root',                           // REMOVE BEFORE PUSH
-    password: 'root',                       // REMOVE BEFORE PUSH
+    user: '',                           // REMOVE BEFORE PUSH
+    password: '',                       // REMOVE BEFORE PUSH
     database: 'egg_db'
 });
 

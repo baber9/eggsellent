@@ -8,58 +8,51 @@
     <div class="row">
         <div class="col-xs-12 col-sm-6">
             
-            <div class="panel panel-default to-eat">
-                <div class="panel-body">
-                    <h5>Crustless Quiche</h5>
-                </div>
-                <div class="panel-footer">Devour!</div>
-            </div>
-            
-            <div class="panel panel-default to-eat">
-                <div class="panel-body">
-                    <h5>Omelet</h5>
-                </div>
-                <div class="panel-footer">Devour!</div>
-            </div>
-            
-            <div class="panel panel-default to-eat">
-                <div class="panel-body">
-                    <h5>Crustless Quiche</h5>
-                </div>
-                <div class="panel-footer">Devour!</div>
-            </div>
+            {{!-- Eggs to be eaten --}}
+
+            {{#each eggs}}
+                {{#unless devoured}}
+                    <div class="panel panel-default to-eat" data-id="{{id}}" data-devoured="{{devoured}}">
+                        <div class="panel-body">
+                            <h5>{{id}} {{egg_name}}</h5>
+                        </div>
+                        <div class="panel-footer devour" data-id="{{id}}">Devour!</div>
+                    </div>
+                {{/unless}}
+            {{/each}}
 
         </div>
+        
         <div class="col-xs-12 col-sm-6">
             
-            <div class="panel panel-default eaten">
-                <div class="panel-body">
-                    <h5>Fried Egg</h5>
-                </div>
-            </div>
+            {{!-- Eggs eaten --}}
+
+            {{#each eggs}}
+                {{#if devoured}}
+                    <div class="panel panel-default eaten">
+                        <div class="panel-body">
+                            <h5>{{this.id}} {{this.egg_name}}</h5>
+                        </div>
+                    </div>
+                {{/if}}
+            {{/each}}
             
-            <div class="panel panel-default eaten">
-                <div class="panel-body">
-                    <h5>Scrambled Egg</h5>
-                </div>
-            </div>
-
-            <div class="panel panel-default eaten">
-                <div class="panel-body">
-                    <h5>Poached Egg</h5>
-                </div>
-            </div>
-
         </div>
     </div>
     <div class="row">
         <div class="col-xs-12">
             <div class="col-sm-3 col-md-3 col-lg-4">&nbsp;</div>
             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
-                <div class="form-group">
-                    <textarea id="egg-input" rows="3" class="form-control" placeholder="Input Favorite Egg Dish Here"></textarea>
-                    <button type="submit" class="btn btn-primary" id="submit-btn">Submit</button>
-                </div>
+
+                <form class="new-egg-form">
+                    <div class="form-group">
+                        <textarea id="egg-input" rows="3" class="form-control" placeholder="Input Favorite Egg Dish Here"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary" id="submit-btn">Submit</button>
+                    </div>
+                </form>
+
                 <p id="instruction">Enter a favorite egg dish and click "submit".  Then hover over the each and click "Devour!" to consume.</p>
             </div>
             <div class="col-sm-3 col-md-3 col-lg-4">&nbsp;</div>

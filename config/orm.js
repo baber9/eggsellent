@@ -30,11 +30,9 @@ function ObjectToSql(obj) {
             arr.push(key + '=' + keyValue);
         }
     }
-    // console.log(arr);  // [ 'name=bryan', 'cool=\'yes, very\'' ] (from Line 35)
     // convert array to strings before returning
     return arr.toString();
 }
-// console.log(ObjectToSql({name: 'bryan', cool: 'yes, very'}));  // name=bryan,cool='yes, very'
 
 // ORM for all SQL statements
 var orm = {
@@ -55,11 +53,10 @@ var orm = {
         queryString += cols.toString();
         queryString += ') ';
         queryString += 'VALUES (';
+
         // call printPlaceholders
         queryString += printPlaceholders(vals.length);
         queryString += ') ';
-
-        console.log(queryString);
 
         connection.query(queryString, vals, (err, result) => {
             if(err) {throw err;}
@@ -76,13 +73,10 @@ var orm = {
         queryString += ' WHERE ';
         queryString += condition;
 
-        // console.log(queryString);
-
         connection.query(queryString, (err, result) => {
             if(err) {throw err;}
             cb(result);
         });
-
     }
 }
 
